@@ -171,7 +171,7 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
     }
   }, [isMounted, initializeEditor])
 
-  async function onSubmit(data: any) {
+  async function onSubmit(data: FormData) {
     const blocks = await ref.current?.save()
 
     const payload: PostCreationRequest = {
