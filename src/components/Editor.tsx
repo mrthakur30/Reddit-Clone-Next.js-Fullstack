@@ -11,7 +11,7 @@ import { toast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
-
+type FormData = z.infer<typeof PostValidator>
 interface EditorProps {
   subredditId: string;
 }
@@ -21,7 +21,7 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<PostCreationRequest>({
+  } = useForm<FormData>({
     resolver: zodResolver(PostValidator),
     defaultValues: {
       subredditId,
