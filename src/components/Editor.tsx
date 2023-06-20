@@ -11,6 +11,7 @@ import { toast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
+import { z } from "zod";
 type FormData = z.infer<typeof PostValidator>
 interface EditorProps {
   subredditId: string;
