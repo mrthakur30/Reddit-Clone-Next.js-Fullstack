@@ -34,26 +34,23 @@ const PostFeed: FC<PostFeedProps> = ({initialPosts,subredditName}) => {
                 },
                 initialData : {pages:[initialPosts], pageParams :[1]}
             })
+
     const posts = data?.pages.flatMap((page)=>page) ?? initialPosts
+    
     return ( 
         <ul className="flex flex-col col-span-2 space-u-6">
             {posts.map((post,index)=>{
-                const votesAmt = post.votes.reduce((acc,vote)=>{
-                    if(vote.type === "UP") return acc +1 ;
-                    if(vote.type === "DOWN") return acc +1 ;
-                    return acc
-                },0)
+                
 
-                const currentVote = post.votes.find((vote)=> vote.userId===session?.user.id)
-
+                
                 if(index === posts.length-1){
                     return (
                         <li key={post.id} ref={ref}>
-                        <Post commentAmt={post.comments.length} post={post} subredditName={post.subreddit.name} />
+                        <Post  post={post} subredditName={post.subreddit.name} />
                         </li>
                     )
                 }else{
-                    return <Post commentAmt={post.comments.length} key={post.id} post={post} subredditName={post.subreddit.name} />
+                    return <Post  key={post.id} post={post} subredditName={post.subreddit.name} />
                 }
                 
             })}

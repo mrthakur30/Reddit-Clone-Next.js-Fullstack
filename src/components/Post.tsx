@@ -2,7 +2,6 @@
 
 import { formatTimeToNow } from "@/lib/utils";
 import { Post, User, Vote } from "@prisma/client";
-import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { FC, useRef } from "react";
 import EditorOutput from "./EditorOutput";
@@ -14,13 +13,11 @@ interface PostProps {
   };
  
   subredditName: string;
-  commentAmt: number;
 }
 
 const Post: FC<PostProps> = ({
   post,
   subredditName,
-  commentAmt,
 }) => {
   const pRef = useRef<HTMLParagraphElement>(null);
 
@@ -63,12 +60,12 @@ const Post: FC<PostProps> = ({
       </div>
 
       <div className="bg-gray-50 z-20 text-sm px-4 py-4 sm:px-6">
-       {/* <Link
+       { <Link
           href={`/r/${subredditName}/post/${post.id}`}
           className="w-fit flex items-center gap-2"
         >
-          <MessageSquare className="h-4 w-4" /> {commentAmt} comments
-            </Link>*/}
+         
+            </Link>}
       </div>
     </div>
   );
